@@ -14,6 +14,20 @@
   --ink: #171714;
   --muted: #5b574d;
   --line: #d8d2c4;
+  --token-container-primary: #fbffff;
+  --token-container-secondary: rgba(255, 255, 255, .5);
+  --token-container-tertiary: rgba(255, 255, 255, .32);
+  --token-container-accent: #477a86;
+  --token-content-on-solid-primary: rgba(16, 19, 20, .9);
+  --token-content-on-solid-secondary: rgba(16, 19, 20, .5);
+  --token-content-on-solid-tertiary: rgba(16, 19, 20, .3);
+  --token-content-on-translucent-primary: rgba(5, 6, 6, .8);
+  --token-content-on-translucent-secondary: rgba(5, 6, 6, .4);
+  --token-content-on-translucent-tertiary: rgba(5, 6, 6, .2);
+  --token-content-on-accent-primary: rgba(255, 255, 255, .96);
+  --token-content-on-accent-secondary: rgba(255, 255, 255, .6);
+  --token-content-on-accent-tertiary: rgba(255, 255, 255, .3);
+  --token-content-accent: #8ccbd8;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; min-height: 100%; background: var(--paper); color: var(--ink); font-family: "Geist", Arial, Helvetica, sans-serif; }
@@ -23,41 +37,41 @@ main { min-height: 100vh; }
 .phone { position: relative; width: 414px; height: 920px; overflow: hidden; border-radius: 55px; border: 1px solid rgba(255,255,255,.2); background: #d8d5ee; box-shadow: 0 40px 120px rgba(0,0,0,.42); transform: scale(.88); }
 .wallpaper { position: absolute; inset: 0; background: radial-gradient(circle at 27% 9%, rgba(236, 143, 172, .92) 0 13%, transparent 34%), radial-gradient(circle at 82% 13%, rgba(247, 201, 188, .9) 0 11%, transparent 31%), radial-gradient(circle at 14% 36%, rgba(147, 202, 239, .95) 0 22%, transparent 46%), radial-gradient(circle at 62% 52%, rgba(218, 190, 242, .78) 0 20%, transparent 42%), radial-gradient(circle at 83% 83%, rgba(229, 162, 83, .92) 0 15%, transparent 36%), linear-gradient(145deg, #ecd1df 0%, #b3d7f0 34%, #c9c5ef 62%, #e7a06d 100%); }
 .wallpaper::before { position: absolute; inset: 0; content: ""; opacity: .34; background-image: radial-gradient(rgba(255,255,255,.65) .5px, transparent .7px), radial-gradient(rgba(0,0,0,.2) .5px, transparent .7px); background-position: 0 0, 1px 1px; background-size: 3px 3px; mix-blend-mode: overlay; }
-.status-bar { position: absolute; left: 0; top: 0; width: 100%; height: 48px; color: rgba(18,19,22,.94); font-size: 14px; font-weight: 600; }
+.status-bar { position: absolute; left: 0; top: 0; width: 100%; height: 48px; color: var(--token-content-on-translucent-primary); font-size: 14px; font-weight: 600; }
 .status-time { position: absolute; left: 32px; top: 22px; line-height: 18px; }
 .status-icons { position: absolute; right: 31px; top: 19px; display: flex; align-items: center; gap: 5px; line-height: 1; }
-.status-icons img { display: block; width: 16px; height: 16px; object-fit: contain; }
-.status-icons img.status-battery { width: 20px; height: 20px; }
+.status-icon { display: block; width: 16px; height: 16px; }
+.status-battery { display: block; width: 20px; height: 20px; }
 .camera { position: absolute; left: 50%; top: 16px; width: 25px; height: 25px; transform: translateX(-50%); border-radius: 999px; background: radial-gradient(circle at 57% 40%, #333 0 8%, transparent 9%), radial-gradient(circle at 50% 50%, #070707 0 40%, #282828 49%, #050505 58%); box-shadow: inset 0 0 0 2px rgba(255,255,255,.08), 0 1px 4px rgba(0,0,0,.3); }
 .launcher-grid { position: absolute; left: 30px; right: 30px; top: 65px; display: grid; grid-template-columns: repeat(4, 72px); grid-auto-rows: 72px; gap: 22px 22px; }
-.widget { position: relative; overflow: hidden; border-radius: 22px; background: rgba(247,249,255,.95); box-shadow: 0 16px 34px rgba(51,62,88,.08); }
+.widget { position: relative; overflow: hidden; border-radius: 22px; background: var(--token-container-primary); box-shadow: 0 16px 34px rgba(51,62,88,.08); }
 .relax-widget { grid-column: span 2; grid-row: span 2; border-radius: 88px; background: radial-gradient(circle at 68% 20%, rgba(255,222,236,.9), rgba(246,250,255,.88) 72%); }
-.relax-img { position: absolute; left: 32px; top: 29px; width: 104px; height: 104px; object-fit: contain; }
-.relax-text { position: absolute; left: 0; right: 0; bottom: 22px; color: rgba(26,27,30,.45); font-size: 14px; text-align: center; transform: rotate(18deg); }
+.relax-img { position: absolute; left: 32px; top: 29px; width: 104px; height: 104px; }
+.relax-text { position: absolute; left: 0; right: 0; bottom: 22px; color: var(--token-content-on-solid-secondary); font-size: 14px; text-align: center; transform: rotate(18deg); }
 .headphone-widget { grid-column: 3 / span 2; grid-row: span 2; display: flex; align-items: center; justify-content: center; }
 .product-img { width: 148px; height: 148px; object-fit: contain; }
 .rec-widget { grid-column: span 2; grid-row: 3; display: flex; align-items: center; gap: 34px; padding: 0 24px; border-radius: 72px; }
 .rec-dot { width: 24px; height: 24px; border-radius: 999px; background: #e21d28; }
-.rec-text { font-family: "Courier New", monospace; font-size: 20px; letter-spacing: 2px; color: #25262a; }
+.rec-text { font-family: "Courier New", monospace; font-size: 20px; letter-spacing: 2px; color: var(--token-content-on-solid-primary); }
 .album-widget { grid-column: 1 / span 2; grid-row: 6 / span 2; border-radius: 20px; background: linear-gradient(135deg, #131313 0 18%, #e5c8bd 19% 58%, #292b28 59% 100%); }
 .album-widget::before { content: ""; position: absolute; left: -12px; top: 22px; width: 154px; height: 82px; border: 10px solid rgba(255,245,234,.8); border-radius: 50%; transform: rotate(-18deg); }
 .media-logo { position: absolute; left: 14px; bottom: 12px; width: 34px; height: 34px; object-fit: contain; transform: rotate(-8deg); }
-.accent-tile { grid-column: 3; grid-row: 5; border-radius: 8px; background: #658bd4; display: grid; place-items: center; color: white; font-size: 30px; }
+.accent-tile { grid-column: 3; grid-row: 5; border-radius: 8px; background: var(--token-container-accent); display: grid; place-items: center; color: var(--token-content-on-accent-primary); font-size: 30px; }
 .weather-tile { grid-column: 4; grid-row: 5; border-radius: 50%; display: grid; place-items: center; }
-.volume-widget { grid-column: 3; grid-row: 6 / span 2; border-radius: 999px; background: rgba(255,255,255,.46); backdrop-filter: blur(20px); padding: 10px; display: flex; align-items: flex-end; }
-.volume-fill { width: 100%; height: 103px; border-radius: 999px; background: #f7f9ff; display: grid; place-items: end center; padding-bottom: 20px; }
+.volume-widget { grid-column: 3; grid-row: 6 / span 2; border-radius: 999px; background: var(--token-container-secondary); backdrop-filter: blur(20px); padding: 10px; display: flex; align-items: flex-end; }
+.volume-fill { width: 100%; height: 103px; border-radius: 999px; background: var(--token-container-primary); display: grid; place-items: end center; padding-bottom: 20px; }
 .timer-tile { grid-column: 4; grid-row: 6; border-radius: 8px; display: grid; place-items: center; color: #25272c; font-size: 30px; }
 .buds-tile { grid-column: 4; grid-row: 7; border-radius: 50%; display: grid; place-items: center; color: #27292f; font-size: 34px; }
 .buds-tile::after { content: ""; position: absolute; right: 0; top: 0; width: 18px; height: 18px; border-radius: 50%; background: #73a3ef; }
-.tile-img { width: 32px; height: 32px; object-fit: contain; }
+.tile-img { width: 32px; height: 32px; }
 .page-dots { position: absolute; left: 0; right: 0; top: 714px; display: flex; justify-content: center; gap: 8px; }
 .page-dots span { width: 6px; height: 6px; border-radius: 50%; background: rgba(247,249,255,.6); }
 .page-dots span:first-child { background: #f7f9ff; }
 .dock { position: absolute; left: 30px; right: 30px; top: 738px; display: grid; grid-template-columns: repeat(4, 72px); gap: 22px; }
-.app-icon { width: 72px; height: 72px; border-radius: 50%; background: #f7f9ff; display: grid; place-items: center; box-shadow: 0 14px 26px rgba(40,52,78,.08); }
-.app-icon img { width: 32px; height: 32px; object-fit: contain; }
-.search-bar { position: absolute; left: 31px; right: 31px; top: 829px; height: 56px; border-radius: 81px; background: rgba(255,255,255,.5); backdrop-filter: blur(20px); display: flex; align-items: center; justify-content: center; gap: 10px; color: rgba(6,7,12,.8); font-size: 15px; font-weight: 500; }
-.search-bar .mag { width: 22px; height: 22px; object-fit: contain; opacity: .75; }
+.app-icon { width: 72px; height: 72px; border-radius: 50%; background: var(--token-container-primary); display: grid; place-items: center; box-shadow: 0 14px 26px rgba(40,52,78,.08); }
+.app-svg { width: 32px; height: 32px; }
+.search-bar { position: absolute; left: 31px; right: 31px; top: 829px; height: 56px; border-radius: 81px; background: var(--token-container-secondary); backdrop-filter: blur(20px); display: flex; align-items: center; justify-content: center; gap: 10px; color: var(--token-content-on-translucent-primary); font-size: 15px; font-weight: 500; }
+.search-bar .mag { width: 22px; height: 22px; opacity: .75; }
 .home-bar { position: absolute; left: 183px; bottom: 8px; width: 48px; height: 4px; border-radius: 999px; background: rgba(0,0,0,.42); }
 .sample { position: absolute; left: 20px; right: 20px; top: 80px; }
 .eyebrow { margin: 0; color: rgba(255,255,255,.58); font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
@@ -115,15 +129,67 @@ li + li { margin-top: 8px; }
               <span class="status-time">10:20</span>
               <div class="camera"></div>
               <div class="status-icons">
-                <img src="assets/network-signal-4bar.svg" alt="" />
-                <img src="assets/wifi.svg" alt="" />
-                <img src="assets/bluetooth.svg" alt="" />
-                <img class="status-battery" src="assets/battery.svg" alt="" />
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="tokenized-svg status-icon" aria-hidden="true" focusable="false">
+<path d="M0.332764 12.9475V9.08244C0.332764 8.82764 0.422042 8.61109 0.600599 8.4328C0.779155 8.25437 0.995965 8.16516 1.25103 8.16516C1.50609 8.16516 1.72257 8.25437 1.90048 8.4328C2.07838 8.61109 2.16734 8.82764 2.16734 9.08244V12.9475C2.16734 13.2023 2.07812 13.4188 1.8997 13.5971C1.72114 13.7756 1.50433 13.8648 1.24927 13.8648C0.994205 13.8648 0.777657 13.7756 0.599621 13.5971C0.421716 13.4188 0.332764 13.2023 0.332764 12.9475ZM4.83669 12.9475V7.20271C4.83669 6.94791 4.92597 6.7313 5.10453 6.55287C5.28308 6.37457 5.49989 6.28543 5.75496 6.28543C6.01002 6.28543 6.2265 6.37457 6.40441 6.55287C6.58244 6.7313 6.67146 6.94791 6.67146 7.20271V12.9475C6.67146 13.2023 6.58218 13.4188 6.40363 13.5971C6.22507 13.7756 6.00826 13.8648 5.7532 13.8648C5.49813 13.8648 5.28165 13.7756 5.10375 13.5971C4.92571 13.4188 4.83669 13.2023 4.83669 12.9475ZM9.34082 12.9475V5.31536C9.34082 5.06055 9.4301 4.844 9.60865 4.66571C9.78721 4.48728 10.004 4.39807 10.2589 4.39807C10.5139 4.39807 10.7305 4.48728 10.9085 4.66571C11.0864 4.844 11.1754 5.06055 11.1754 5.31536V12.9475C11.1754 13.2023 11.0861 13.4188 10.9076 13.5971C10.729 13.7756 10.5122 13.8648 10.2571 13.8648C10.0021 13.8648 9.78558 13.7756 9.60767 13.5971C9.42977 13.4188 9.34082 13.2023 9.34082 12.9475ZM13.8447 12.9475V3.05205C13.8447 2.79725 13.934 2.5807 14.1126 2.40241C14.2911 2.22398 14.5079 2.13477 14.763 2.13477C15.0181 2.13477 15.2346 2.22398 15.4125 2.40241C15.5905 2.5807 15.6795 2.79725 15.6795 3.05205V12.9475C15.6795 13.2023 15.5902 13.4188 15.4117 13.5971C15.2331 13.7756 15.0163 13.8648 14.7613 13.8648C14.5062 13.8648 14.2896 13.7756 14.1116 13.5971C13.9337 13.4188 13.8447 13.2023 13.8447 12.9475Z" fill="var(--token-content-on-translucent-secondary)"/>
+<path d="M1.25098 8.16504C1.50595 8.16508 1.72253 8.25424 1.90039 8.43262C2.0782 8.61082 2.1669 8.82741 2.16699 9.08203V12.9473C2.16699 13.202 2.0777 13.4184 1.89941 13.5967C1.72086 13.7751 1.50409 13.8652 1.24902 13.8652C0.993961 13.8652 0.777645 13.7751 0.599609 13.5967C0.421776 13.4184 0.332031 13.202 0.332031 12.9473V9.08203C0.332128 8.82741 0.422126 8.61082 0.600586 8.43262C0.779103 8.25433 0.996012 8.16504 1.25098 8.16504Z" fill="var(--token-content-on-translucent-primary)"/>
+<path d="M5.75488 6.28516C6.00987 6.2852 6.22643 6.37448 6.4043 6.55273C6.58233 6.73116 6.6709 6.94832 6.6709 7.20312V12.9473C6.6709 13.202 6.58175 13.4184 6.40332 13.5967C6.22476 13.7751 6.00799 13.8652 5.75293 13.8652C5.49788 13.8652 5.28142 13.7751 5.10352 13.5967C4.92562 13.4184 4.83691 13.202 4.83691 12.9473V7.20312C4.83691 6.94832 4.92594 6.73116 5.10449 6.55273C5.28302 6.37455 5.4999 6.28516 5.75488 6.28516Z" fill="var(--token-content-on-translucent-primary)"/>
+<path d="M10.2588 4.39844C10.5138 4.39847 10.7302 4.48762 10.9082 4.66602C11.086 4.84429 11.1748 5.06068 11.1748 5.31543V12.9473C11.1748 13.202 11.0857 13.4184 10.9072 13.5967C10.7287 13.7751 10.5119 13.8652 10.2568 13.8652C10.0018 13.8652 9.78532 13.7751 9.60742 13.5967C9.42967 13.4184 9.34082 13.202 9.34082 12.9473V5.31543C9.34082 5.0607 9.42995 4.84428 9.6084 4.66602C9.78695 4.48759 10.0039 4.39844 10.2588 4.39844Z" fill="var(--token-content-on-translucent-primary)"/>
+</svg>
+
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="tokenized-svg status-icon" aria-hidden="true" focusable="false">
+<g clip-path="url(#clip0_14155_2041)">
+<mask id="mask0_14155_2041" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="16" height="16">
+<rect width="16" height="16" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_14155_2041)">
+<mask id="mask1_14155_2041" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="-1" y="-1" width="18" height="18">
+<rect x="-1" y="-1" width="18" height="18" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask1_14155_2041)">
+<path d="M7.99989 4.25C6.89989 4.25 5.83039 4.4255 4.79139 4.7765C3.75251 5.12738 2.80039 5.64275 1.93501 6.32262C1.72826 6.489 1.49195 6.57025 1.22607 6.56637C0.960199 6.5625 0.734012 6.46731 0.547512 6.28081C0.368637 6.10194 0.280387 5.88269 0.282762 5.62306C0.285262 5.36344 0.389887 5.15431 0.596637 4.99569C1.64851 4.14469 2.80857 3.49519 4.07682 3.04719C5.34507 2.59906 6.65276 2.375 7.99989 2.375C9.35951 2.375 10.6703 2.59906 11.9323 3.04719C13.1943 3.49519 14.3513 4.14469 15.4031 4.99569C15.6099 5.15431 15.7145 5.36344 15.717 5.62306C15.7194 5.88269 15.6311 6.10194 15.4523 6.28081C15.2658 6.46731 15.0396 6.5625 14.7737 6.56637C14.5078 6.57025 14.2715 6.489 14.0648 6.32262C13.1946 5.64275 12.2432 5.12738 11.2104 4.7765C10.1778 4.4255 9.10764 4.25 7.99989 4.25ZM7.99989 8.56963C7.46814 8.56963 6.95445 8.64369 6.45882 8.79181C5.96307 8.93994 5.49645 9.15725 5.05895 9.44375C4.83682 9.59475 4.59289 9.66638 4.32714 9.65863C4.06126 9.651 3.83501 9.55388 3.64839 9.36725C3.46964 9.1885 3.38214 8.97119 3.38589 8.71531C3.38976 8.45956 3.49507 8.25625 3.70182 8.10538C4.32582 7.64762 5.00345 7.29806 5.7347 7.05669C6.46595 6.81544 7.22101 6.69481 7.99989 6.69481C8.78351 6.69481 9.54214 6.81669 10.2758 7.06044C11.0095 7.30419 11.6884 7.65731 12.3124 8.11981C12.5191 8.27069 12.6256 8.47281 12.6319 8.72619C12.6381 8.97956 12.5494 9.19569 12.3658 9.37456C12.1744 9.56106 11.9458 9.65819 11.68 9.66594C11.4141 9.67356 11.1701 9.60188 10.9479 9.45088C10.5104 9.15963 10.0426 8.93994 9.54451 8.79181C9.04651 8.64369 8.53164 8.56963 7.99989 8.56963ZM7.07026 13.2421C6.81501 12.9868 6.68739 12.6769 6.68739 12.3125C6.68739 11.9481 6.81501 11.6383 7.07026 11.3829C7.32564 11.1276 7.63551 11 7.99989 11C8.36426 11 8.67414 11.1276 8.92951 11.3829C9.18476 11.6383 9.31239 11.9481 9.31239 12.3125C9.31239 12.6769 9.18476 12.9868 8.92951 13.2421C8.67414 13.4974 8.36426 13.625 7.99989 13.625C7.63551 13.625 7.32564 13.4974 7.07026 13.2421Z" fill="var(--token-content-on-translucent-primary)"/>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_14155_2041">
+<rect width="16" height="16" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="tokenized-svg status-icon" aria-hidden="true" focusable="false">
+<g clip-path="url(#clip0_14155_2036)">
+<mask id="mask0_14155_2036" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="16" height="16">
+<rect width="16" height="16" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_14155_2036)">
+<mask id="mask1_14155_2036" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="-1" y="-1" width="18" height="18">
+<rect x="-1" y="-1" width="18" height="18" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask1_14155_2036)">
+<path d="M3.04956 9.12539C2.73706 9.12539 2.47144 9.01602 2.25269 8.79727C2.03394 8.57852 1.92456 8.31289 1.92456 8.00039C1.92456 7.68789 2.03394 7.42227 2.25269 7.20352C2.47144 6.98477 2.73706 6.87539 3.04956 6.87539C3.36206 6.87539 3.62769 6.98477 3.84644 7.20352C4.06519 7.42227 4.17456 7.68789 4.17456 8.00039C4.17456 8.31289 4.06519 8.57852 3.84644 8.79727C3.62769 9.01602 3.36206 9.12539 3.04956 9.12539ZM12.9496 9.12539C12.6371 9.12539 12.3714 9.01602 12.1527 8.79727C11.9339 8.57852 11.8246 8.31289 11.8246 8.00039C11.8246 7.68789 11.9339 7.42227 12.1527 7.20352C12.3714 6.98477 12.6371 6.87539 12.9496 6.87539C13.2621 6.87539 13.5277 6.98477 13.7464 7.20352C13.9652 7.42227 14.0746 7.68789 14.0746 8.00039C14.0746 8.31289 13.9652 8.57852 13.7464 8.79727C13.5277 9.01602 13.2621 9.12539 12.9496 9.12539ZM7.09956 14.5816V9.91289L4.36206 12.6504C4.22456 12.7879 4.06831 12.8535 3.89331 12.8473C3.71831 12.841 3.56206 12.7691 3.42456 12.6316C3.28706 12.4941 3.21831 12.3348 3.21831 12.1535C3.21831 11.9723 3.28706 11.8129 3.42456 11.6754L7.09956 8.00039L3.40675 4.30758C3.26862 4.16945 3.20269 4.00977 3.20894 3.82852C3.21519 3.64727 3.28706 3.48789 3.42456 3.35039C3.56206 3.21289 3.72144 3.14414 3.90269 3.14414C4.08394 3.14414 4.24331 3.21289 4.38081 3.35039L7.09956 6.08789V1.41914C7.09956 1.20664 7.16675 1.04102 7.30112 0.922266C7.4355 0.803516 7.59225 0.744141 7.77137 0.744141C7.861 0.744141 7.94519 0.759766 8.02394 0.791016C8.10269 0.822266 8.17581 0.869141 8.24331 0.931641L11.6933 4.38164C11.7558 4.44914 11.8027 4.52227 11.8339 4.60102C11.8652 4.67977 11.8808 4.76414 11.8808 4.85414C11.8808 4.94414 11.8652 5.02852 11.8339 5.10727C11.8027 5.18602 11.7558 5.25664 11.6933 5.31914L9.01206 8.00039L11.6933 10.6816C11.7558 10.7491 11.8027 10.8223 11.8339 10.901C11.8652 10.9798 11.8808 11.0641 11.8808 11.1541C11.8808 11.2441 11.8652 11.3285 11.8339 11.4073C11.8027 11.486 11.7558 11.5566 11.6933 11.6191L8.24331 15.0691C8.17681 15.1316 8.10481 15.1785 8.02731 15.2098C7.94969 15.241 7.86656 15.2566 7.77794 15.2566C7.60069 15.2566 7.44331 15.1973 7.30581 15.0785C7.16831 14.9598 7.09956 14.7941 7.09956 14.5816ZM8.44956 6.65039L10.2496 4.85039L8.44956 3.05039V6.65039ZM8.44956 12.9504L10.2496 11.1504L8.44956 9.35039V12.9504Z" fill="var(--token-content-on-translucent-primary)"/>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_14155_2036">
+<rect width="16" height="16" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="tokenized-svg status-battery" aria-hidden="true" focusable="false">
+<path d="M5.58967 23.3346C4.57256 23.3346 3.72 22.9906 3.032 22.3026C2.344 21.6146 2 20.7621 2 19.745V12.2576C2 11.2663 2.344 10.4202 3.032 9.7193C3.72 9.01841 4.57256 8.66797 5.58967 8.66797H20.4103C20.6937 8.66797 20.9311 8.76386 21.1227 8.95564C21.3144 9.14741 21.4103 9.38497 21.4103 9.6683C21.4103 9.95186 21.3144 10.1893 21.1227 10.3806C20.9311 10.5722 20.6937 10.668 20.4103 10.668H5.58967C5.13922 10.668 4.76167 10.8203 4.457 11.125C4.15233 11.4296 4 11.8072 4 12.2576V19.745C4 20.1954 4.15233 20.573 4.457 20.8776C4.76167 21.1823 5.13922 21.3346 5.58967 21.3346H20.4103C20.6937 21.3346 20.9311 21.4305 21.1227 21.6223C21.3144 21.8141 21.4103 22.0516 21.4103 22.335C21.4103 22.6185 21.3144 22.856 21.1227 23.0473C20.9311 23.2389 20.6937 23.3346 20.4103 23.3346H5.58967ZM5.58967 18.5396V13.463C5.58967 13.1214 5.70522 12.8352 5.93633 12.6043C6.16722 12.3732 6.45344 12.2576 6.795 12.2576H16.205C16.5466 12.2576 16.8328 12.3732 17.0637 12.6043C17.2948 12.8352 17.4103 13.1214 17.4103 13.463V18.5396C17.4103 18.8812 17.2948 19.1674 17.0637 19.3983C16.8328 19.6294 16.5466 19.745 16.205 19.745H6.795C6.45344 19.745 6.16722 19.6294 5.93633 19.3983C5.70522 19.1674 5.58967 18.8812 5.58967 18.5396ZM24.3333 17.0013H21.3333C21.05 17.0013 20.8126 16.9054 20.621 16.7136C20.4292 16.5219 20.3333 16.2843 20.3333 16.001C20.3333 15.7174 20.4292 15.48 20.621 15.2886C20.8126 15.0971 21.05 15.0013 21.3333 15.0013H24.3333V12.0013C24.3333 11.718 24.4292 11.4805 24.621 11.289C24.8128 11.0972 25.0503 11.0013 25.3337 11.0013C25.6172 11.0013 25.8547 11.0972 26.046 11.289C26.2376 11.4805 26.3333 11.718 26.3333 12.0013V15.0013H29.3333C29.6167 15.0013 29.8541 15.0972 30.0457 15.289C30.2374 15.4807 30.3333 15.7183 30.3333 16.0016C30.3333 16.2852 30.2374 16.5226 30.0457 16.714C29.8541 16.9055 29.6167 17.0013 29.3333 17.0013H26.3333V20.0013C26.3333 20.2846 26.2374 20.5221 26.0457 20.7136C25.8539 20.9054 25.6163 21.0013 25.333 21.0013C25.0494 21.0013 24.812 20.9054 24.6207 20.7136C24.4291 20.5221 24.3333 20.2846 24.3333 20.0013V17.0013Z" fill="var(--token-content-on-translucent-primary)"/>
+</svg>
+
               </div>
             </div>
             <div class="launcher-grid">
               <div class="widget relax-widget">
-                <img class="relax-img" src="assets/relaxation.svg" alt="" />
+                <svg width="102" height="102" viewBox="0 0 102 102" fill="none" xmlns="http://www.w3.org/2000/svg" class="tokenized-svg relax-img" aria-hidden="true" focusable="false">
+<path d="M51 0C79.1665 0 102 22.8335 102 51C102 79.1662 79.1671 101.998 51.001 101.999V102L51 101.999V102C22.8335 102 0 79.1665 0 51C4.12327e-06 22.8335 22.8335 6.1857e-06 51 0ZM51.001 1.59961C49.976 1.59961 48.5962 2.3993 47.0352 4.86426C45.5238 7.25089 44.1031 10.8104 42.8867 15.3516C40.4601 24.4108 38.9395 37.015 38.9395 51C38.9395 64.985 40.4601 77.5892 42.8867 86.6484C44.1031 91.1896 45.5238 94.7491 47.0352 97.1357C48.5957 99.5999 49.9751 100.399 51 100.399H51.001C52.0259 100.399 53.405 99.6004 54.9658 97.1357C56.4772 94.7491 57.8979 91.1896 59.1143 86.6484C61.5408 77.5892 63.0615 64.985 63.0615 51C63.0615 37.015 61.5408 24.4108 59.1143 15.3516C57.8979 10.8104 56.4772 7.25088 54.9658 4.86426C53.405 2.39963 52.0259 1.59982 51.001 1.59961ZM47.4678 1.72461C37.1264 2.45524 27.6653 6.37016 20.0557 12.4932C24.648 14.4751 28.2314 30.9577 28.2314 50.998C28.2314 71.0409 24.6468 87.525 20.0537 89.5039C27.6628 95.6273 37.1228 99.543 47.4639 100.274C41.6337 94.4565 37.3398 74.6002 37.3398 51C37.3398 27.3966 41.6363 7.53941 47.4678 1.72461ZM54.5361 1.72559C60.3666 7.54274 64.6611 27.399 64.6611 51C64.6611 74.6031 60.3644 94.4593 54.5332 100.274C80.167 98.4628 100.4 77.0948 100.4 51C100.4 24.9062 80.1686 3.53859 54.5361 1.72559ZM19.125 13.8926C18.8305 13.8926 18.0398 14.2028 16.9775 16.1123C15.9913 17.8853 15.0513 20.5572 14.2422 23.9961C12.6299 30.8484 11.6172 40.3959 11.6172 50.998C11.6172 61.6004 12.6299 71.1486 14.2422 78.001C15.0513 81.4395 15.9914 84.1108 16.9775 85.8838C18.0398 87.7933 18.8305 88.1035 19.125 88.1035C19.4198 88.1033 20.2095 87.7927 21.2715 85.8838C22.2577 84.1109 23.1977 81.4395 24.0068 78.001C25.6192 71.1486 26.6318 61.6004 26.6318 50.998C26.6318 40.3958 25.6191 30.8484 24.0068 23.9961C23.1977 20.5572 22.2578 17.8853 21.2715 16.1123C20.2096 14.2034 19.4197 13.8928 19.125 13.8926ZM14.457 17.7568C6.46884 26.5328 1.59961 38.198 1.59961 51C1.59961 63.8017 6.46913 75.4663 14.457 84.2422C11.7976 77.4837 10.0176 65.1244 10.0176 50.998C10.0176 36.8732 11.798 24.5155 14.457 17.7568Z" fill="var(--token-content-on-solid-primary)"/>
+</svg>
+
                 <div class="relax-text">relaxation</div>
               </div>
               <div class="widget headphone-widget">
@@ -135,32 +201,78 @@ li + li { margin-top: 8px; }
               </div>
               <div class="widget accent-tile">▭+</div>
               <div class="widget weather-tile">
-                <img class="tile-img" src="assets/weather.svg" alt="" />
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="tokenized-svg tile-img" aria-hidden="true" focusable="false">
+<path d="M10.9795 11.8281C14.7934 11.8281 18.0496 14.2067 19.3516 17.5605C20.5475 16.5686 22.0837 15.9727 23.7588 15.9727C27.5738 15.9727 30.667 19.0659 30.667 22.8809C30.6667 26.5798 27.7588 29.5993 24.1045 29.7793V29.7852H23.877C23.8377 29.7858 23.7982 29.7881 23.7588 29.7881C23.7193 29.7881 23.6799 29.7858 23.6406 29.7852H11.0947C11.0565 29.7856 11.0178 29.7881 10.9795 29.7881C10.941 29.7881 10.9026 29.7856 10.8643 29.7852H10.6348V29.7793C5.83529 29.5979 2 25.6515 2 20.8076C2.00023 15.8485 6.02036 11.8284 10.9795 11.8281Z" fill="var(--token-content-on-solid-primary)"/>
+<path d="M23.0171 4.78656C23.1828 4.99166 23.454 5.07975 23.7086 5.01127L25.7511 4.46207C26.161 4.35186 26.5682 4.64765 26.59 5.07153L26.699 7.18481C26.7126 7.4482 26.8802 7.67883 27.1265 7.7731L29.1024 8.52929C29.4989 8.68101 29.6544 9.15966 29.423 9.51546L28.2694 11.2887C28.1256 11.5097 28.1256 11.7947 28.2694 12.0158L29.423 13.789C29.6545 14.1448 29.4989 14.6234 29.1025 14.7752L28.8619 14.8673C28.6692 14.9411 28.4539 14.9201 28.2739 14.819C27.0684 14.1418 25.6967 13.7254 24.2341 13.6512L23.7585 13.6395C22.7059 13.6396 21.693 13.8165 20.7489 14.1417C20.454 14.2433 20.1243 14.147 19.9336 13.9001C18.3133 11.8012 15.9723 10.2855 13.2778 9.72886C13.1132 9.69485 12.9673 9.59872 12.8756 9.45778C12.6636 9.13164 12.8062 8.69298 13.1695 8.55393L15.2098 7.7731C15.4561 7.67883 15.6237 7.4482 15.6373 7.18481L15.7463 5.07153C15.7681 4.64765 16.1753 4.35186 16.5852 4.46207L18.6278 5.0113C18.8824 5.07976 19.1535 4.99172 19.3193 4.78671L20.6502 3.14101C20.917 2.81102 21.4202 2.81108 21.687 3.14113L23.0171 4.78656Z" fill="var(--token-content-on-solid-secondary)"/>
+</svg>
+
               </div>
               <div class="widget album-widget">
-                <img class="media-logo" src="assets/Media%20Logo.svg" alt="" />
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="tokenized-svg media-logo" aria-hidden="true" focusable="false">
+<ellipse cx="15" cy="32" rx="2" ry="2" transform="rotate(-90 15 32)" fill="var(--token-content-on-accent-primary)"/>
+<ellipse cx="21" cy="32" rx="2" ry="2" transform="rotate(-90 21 32)" fill="var(--token-content-on-accent-primary)"/>
+<ellipse cx="27" cy="32" rx="2" ry="2" transform="rotate(-90 27 32)" fill="var(--token-content-on-accent-primary)"/>
+<ellipse cx="33" cy="32" rx="2" ry="2" transform="rotate(-90 33 32)" fill="var(--token-content-on-accent-primary)"/>
+<ellipse cx="21" cy="20" rx="2" ry="2" transform="rotate(-90 21 20)" fill="var(--token-content-on-accent-primary)"/>
+<ellipse cx="21" cy="16" rx="2" ry="2" transform="rotate(-90 21 16)" fill="var(--token-content-on-accent-primary)"/>
+<ellipse cx="15" cy="28" rx="2" ry="2" transform="rotate(-90 15 28)" fill="var(--token-content-on-accent-primary)"/>
+<ellipse cx="15" cy="24" rx="2" ry="2" transform="rotate(-90 15 24)" fill="var(--token-content-on-accent-primary)"/>
+<ellipse cx="21" cy="28" rx="2" ry="2" transform="rotate(-90 21 28)" fill="var(--token-content-on-accent-primary)"/>
+<ellipse cx="33" cy="28" rx="2" ry="2" transform="rotate(-90 33 28)" fill="var(--token-content-on-accent-primary)"/>
+<ellipse cx="21" cy="24" rx="2" ry="2" transform="rotate(-90 21 24)" fill="var(--token-content-on-accent-primary)"/>
+<ellipse cx="33" cy="24" rx="2" ry="2" transform="rotate(-90 33 24)" fill="var(--token-content-on-accent-primary)"/>
+</svg>
+
               </div>
               <div class="volume-widget">
                 <div class="volume-fill">
-                  <img class="tile-img" src="assets/volume.svg" alt="" />
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="tokenized-svg tile-img" aria-hidden="true" focusable="false">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12.349 5.57071C13.8188 4.10116 16.3317 5.14203 16.332 7.22045V24.7829C16.3315 26.8611 13.8188 27.902 12.349 26.4327L9.21094 23.2947C9.02348 23.1073 8.76897 23.0018 8.50391 23.0017H5.33203C3.67533 23.0017 2.33228 21.6583 2.33203 20.0017V12.0017C2.33213 10.3449 3.67524 9.0017 5.33203 9.0017H8.50391C8.76891 9.00162 9.02349 8.89605 9.21094 8.70873L12.349 5.57071ZM14.332 7.22045C14.3317 6.92383 13.9729 6.77516 13.763 6.98477L10.625 10.1228C10.0625 10.6852 9.29934 11.0016 8.50391 11.0017H5.33203C4.77981 11.0017 4.33213 11.4495 4.33203 12.0017V20.0017C4.33228 20.5538 4.7799 21.0017 5.33203 21.0017H8.50391C9.2994 21.0018 10.0625 21.3181 10.625 21.8806L13.763 25.0186C13.9729 25.228 14.3315 25.0793 14.332 24.7829V7.22045Z" fill="var(--token-content-on-solid-primary)"/>
+<path d="M20.793 5.67618C25.8172 6.32092 29.6653 10.7178 29.6654 16.0017C29.6651 21.2855 25.8171 25.6825 20.793 26.3272C20.2455 26.3974 19.7438 26.01 19.6732 25.4626C19.6031 24.9151 19.9902 24.4133 20.5378 24.3428C24.5333 23.8302 27.6651 20.3107 27.6654 16.0017C27.6653 11.6926 24.5334 8.17317 20.5378 7.66055C19.9903 7.59013 19.6032 7.08827 19.6732 6.54076C19.7437 5.99326 20.2454 5.60594 20.793 5.67618Z" fill="var(--token-content-on-solid-secondary)"/>
+<path d="M19.4596 11.0095C21.9066 11.3236 23.7603 13.4588 23.7604 16.0017C23.7602 18.5445 21.9066 20.6798 19.4596 20.9939C18.9121 21.0641 18.4105 20.6767 18.3398 20.1293C18.2697 19.5817 18.6569 19.08 19.2044 19.0095C20.6228 18.8275 21.7602 17.5698 21.7604 16.0017C21.7603 14.4336 20.6228 13.1759 19.2044 12.9939C18.657 12.9235 18.2699 12.4216 18.3398 11.8741C18.4104 11.3266 18.912 10.9393 19.4596 11.0095Z" fill="var(--token-content-on-solid-tertiary)"/>
+</svg>
+
                 </div>
               </div>
               <div class="widget timer-tile">
-                <img class="tile-img" src="assets/rewind.svg" alt="" />
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="tokenized-svg tile-img" aria-hidden="true" focusable="false">
+<path d="M12.2833 15.1286H11.1553C10.9262 15.1286 10.7364 15.0533 10.586 14.9029C10.4355 14.7524 10.3603 14.5627 10.3603 14.3336C10.3603 14.1044 10.4355 13.9147 10.586 13.7642C10.7364 13.6138 10.9262 13.5386 11.1553 13.5386H13.0783C13.3074 13.5386 13.4971 13.6138 13.6473 13.7642C13.7977 13.9147 13.873 14.1044 13.873 14.3336V20.3336C13.873 20.5627 13.7977 20.7524 13.6473 20.9029C13.4971 21.0533 13.3074 21.1286 13.0783 21.1286C12.8492 21.1286 12.6594 21.0533 12.509 20.9029C12.3585 20.7524 12.2833 20.5627 12.2833 20.3336V15.1286ZM16.7963 21.1286C16.4185 21.1286 16.1019 21.0008 15.8463 20.7452C15.5907 20.4897 15.463 20.173 15.463 19.7952V14.8719C15.463 14.4941 15.5907 14.1774 15.8463 13.9219C16.1019 13.6663 16.4185 13.5386 16.7963 13.5386H19.309C19.6867 13.5386 20.0034 13.6663 20.259 13.9219C20.5145 14.1774 20.6423 14.4941 20.6423 14.8719V19.7952C20.6423 20.173 20.5145 20.4897 20.259 20.7452C20.0034 21.0008 19.6867 21.1286 19.309 21.1286H16.7963ZM17.2063 19.5386H18.8986C18.95 19.5386 18.9885 19.5258 19.0143 19.5002C19.0399 19.4747 19.0526 19.4362 19.0526 19.3849V15.2822C19.0526 15.2309 19.0399 15.1924 19.0143 15.1669C18.9885 15.1413 18.95 15.1286 18.8986 15.1286H17.2063C17.1552 15.1286 17.1167 15.1413 17.091 15.1669C17.0654 15.1924 17.0526 15.2309 17.0526 15.2822V19.3849C17.0526 19.4362 17.0654 19.4747 17.091 19.5002C17.1167 19.5258 17.1552 19.5386 17.2063 19.5386ZM11.581 27.7746C10.2065 27.1797 9.00819 26.3711 7.98597 25.3489C6.96375 24.3267 6.15519 23.1283 5.5603 21.7539C4.96541 20.3797 4.66797 18.9062 4.66797 17.3336C4.66797 17.0498 4.76375 16.8122 4.9553 16.6209C5.14664 16.4293 5.38419 16.3336 5.66797 16.3336C5.95175 16.3336 6.1893 16.4293 6.38064 16.6209C6.57219 16.8122 6.66797 17.0498 6.66797 17.3336C6.66797 19.9336 7.57352 22.1391 9.38464 23.9502C11.1957 25.7613 13.4013 26.6669 16.0013 26.6669C18.6013 26.6669 20.8069 25.7613 22.618 23.9502C24.4291 22.1391 25.3346 19.9336 25.3346 17.3336C25.3346 14.7336 24.4291 12.528 22.618 10.7169C20.8069 8.90578 18.6013 8.00022 16.0013 8.00022H15.6473L17.063 9.41556C17.2612 9.614 17.359 9.84611 17.3563 10.1119C17.3539 10.3777 17.2561 10.6139 17.063 10.8206C16.8561 11.0274 16.6184 11.1343 16.35 11.1412C16.0817 11.1481 15.8442 11.0481 15.6373 10.8412L12.64 7.83089C12.3989 7.59 12.2783 7.30889 12.2783 6.98756C12.2783 6.666 12.3989 6.38478 12.64 6.14389L15.663 3.13356C15.8612 2.93533 16.0966 2.83744 16.3693 2.83989C16.642 2.84256 16.8817 2.94733 17.0886 3.15422C17.2817 3.36089 17.3817 3.595 17.3886 3.85656C17.3953 4.11811 17.2953 4.35233 17.0886 4.55922L15.6473 6.00022H16.0013C17.574 6.00022 19.0474 6.29767 20.4216 6.89256C21.7961 7.48744 22.9944 8.296 24.0166 9.31822C25.0389 10.3404 25.8474 11.5388 26.4423 12.9132C27.0372 14.2874 27.3346 15.7609 27.3346 17.3336C27.3346 18.9062 27.0372 20.3797 26.4423 21.7539C25.8474 23.1283 25.0389 24.3267 24.0166 25.3489C22.9944 26.3711 21.7961 27.1797 20.4216 27.7746C19.0474 28.3694 17.574 28.6669 16.0013 28.6669C14.4286 28.6669 12.9552 28.3694 11.581 27.7746Z" fill="var(--token-content-on-solid-primary)"/>
+</svg>
+
               </div>
               <div class="widget buds-tile">
-                <img class="tile-img" src="assets/NothingX.svg" alt="" />
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="tokenized-svg tile-img" aria-hidden="true" focusable="false">
+<path opacity="0.6" d="M15.9757 26.0296L14.127 27.8792C11.3516 30.6545 6.85179 30.6543 4.07624 27.8792C1.30074 25.1037 1.30078 20.604 4.07624 17.8284L5.92487 15.9788L15.9757 26.0296ZM18.1221 20.6087C17.5862 21.7378 17.4776 23.0191 17.795 24.2103C17.4774 23.0189 17.5856 21.738 18.1221 20.6087ZM18.1563 20.5394C18.1944 20.4622 18.2343 20.3856 18.2764 20.3099C18.2343 20.3856 18.1944 20.4621 18.1563 20.5394ZM18.6661 19.7113C18.5344 19.8861 18.4145 20.0669 18.3077 20.2533C18.4146 20.0669 18.5344 19.8861 18.6661 19.7113ZM18.7003 19.6663C18.7608 19.5877 18.8241 19.5107 18.8897 19.4349C18.8241 19.5107 18.7608 19.5877 18.7003 19.6663ZM19.1505 19.1536C19.0683 19.2358 18.9897 19.3205 18.9141 19.4066C18.9896 19.3206 19.0674 19.2357 19.1495 19.1536C19.2269 19.0763 19.3069 19.0025 19.3878 18.931C19.307 19.0024 19.2277 19.0764 19.1505 19.1536ZM19.46 18.8685C19.5219 18.8157 19.5848 18.7646 19.6485 18.7152C19.5848 18.7646 19.5219 18.8157 19.46 18.8685ZM19.712 18.6663C19.7972 18.6023 19.8837 18.5409 19.9717 18.4827C19.8837 18.5409 19.7972 18.6023 19.712 18.6663ZM20.0079 18.4593C20.0851 18.4093 20.1631 18.3613 20.2423 18.3158C20.1631 18.3613 20.0851 18.4093 20.0079 18.4593ZM20.3184 18.2728C20.3851 18.2359 20.4527 18.2011 20.5206 18.1673C20.4527 18.2011 20.3851 18.2359 20.3184 18.2728ZM21.1964 17.888C20.9984 17.9538 20.8039 18.0323 20.6133 18.1224C20.8039 18.0323 20.9984 17.9538 21.1964 17.888ZM21.2344 17.8753C21.3217 17.847 21.4097 17.8217 21.4981 17.7982C21.4097 17.8217 21.3217 17.8471 21.2344 17.8753ZM23.5538 17.6673C23.7693 17.6963 23.9831 17.7395 24.1944 17.7952C23.9832 17.7395 23.7693 17.6963 23.5538 17.6673ZM21.9014 17.7074C21.9935 17.6904 22.086 17.6764 22.1788 17.6644C22.086 17.6763 21.9935 17.6905 21.9014 17.7074ZM23.2266 17.6341C23.3252 17.6411 23.4235 17.6509 23.5216 17.6634C23.4235 17.6508 23.3251 17.6411 23.2266 17.6341ZM22.2247 17.6585C22.3182 17.6473 22.412 17.6384 22.5059 17.6322C22.412 17.6383 22.3182 17.6473 22.2247 17.6585ZM22.9034 17.6214C22.9998 17.6223 23.0962 17.6259 23.1925 17.6322C23.0962 17.6259 22.9998 17.6224 22.9034 17.6214ZM22.8633 17.6204C22.7595 17.6202 22.6556 17.6233 22.5518 17.6292C22.6556 17.6233 22.7595 17.6202 22.8633 17.6204ZM17.8301 4.07356C20.6056 1.29842 25.1055 1.29837 27.8809 4.07356C30.6562 6.84908 30.6563 11.3499 27.8809 14.1253L26.0264 15.9788L15.9757 5.92708L17.8301 4.07356Z" fill="var(--token-content-on-solid-secondary)"/>
+</svg>
+
               </div>
             </div>
             <div class="page-dots"><span></span><span></span><span></span></div>
             <div class="dock">
-              <div class="app-icon"><img src="assets/Phone.svg" alt="" /></div>
-              <div class="app-icon"><img src="assets/telegram.svg" alt="" /></div>
-              <div class="app-icon"><img src="assets/notion.svg" alt="" /></div>
-              <div class="app-icon"><img src="assets/lark.svg" alt="" /></div>
+              <div class="app-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="tokenized-svg app-svg" aria-hidden="true" focusable="false">
+<path d="M28.4011 30.1654C25.2602 30.1654 22.1048 29.4351 18.9348 27.9745C15.7651 26.514 12.8501 24.4537 10.1898 21.7937C7.54037 19.1334 5.48537 16.2209 4.02482 13.0562C2.56426 9.89175 1.83398 6.73912 1.83398 3.59828C1.83398 3.09828 2.00065 2.67884 2.33398 2.33995C2.66732 2.00134 3.08398 1.83203 3.58398 1.83203H9.01982C9.44065 1.83203 9.8119 1.96939 10.1336 2.24412C10.4552 2.51856 10.6598 2.85773 10.7473 3.26161L11.7027 8.16536C11.7688 8.62036 11.755 9.01134 11.6611 9.33828C11.5669 9.66523 11.398 9.93981 11.1544 10.162L7.30523 13.9091C7.92468 15.0436 8.63246 16.1168 9.42857 17.1287C10.2244 18.1404 11.0861 19.1066 12.0136 20.0275C12.928 20.9422 13.9002 21.7916 14.9302 22.5758C15.9602 23.3599 17.0725 24.0897 18.2669 24.7649L22.0069 20.9924C22.2677 20.7211 22.5836 20.5308 22.9544 20.4216C23.325 20.3127 23.7101 20.2861 24.1098 20.3416L28.7377 21.2841C29.1586 21.3952 29.502 21.6099 29.7682 21.9283C30.0343 22.2466 30.1673 22.6077 30.1673 23.0116V28.4154C30.1673 28.9154 29.998 29.332 29.6594 29.6654C29.3205 29.9987 28.9011 30.1654 28.4011 30.1654Z" fill="var(--token-content-on-solid-primary)"/>
+</svg>
+</div>
+              <div class="app-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="tokenized-svg app-svg" aria-hidden="true" focusable="false">
+<path d="M2.71475 14.5488C10.8846 10.989 16.3302 8.63897 19.0574 7.5046C26.8385 4.26389 28.4545 3.70114 29.5076 3.6837C29.7397 3.68078 30.259 3.73592 30.5956 4.00863C30.8769 4.2407 30.9553 4.55112 30.9931 4.76878C31.0308 4.98634 31.0772 5.48537 31.0395 5.87411C30.6187 10.3073 28.7939 21.0708 27.8655 26.0377C27.4738 28.1382 26.6992 28.8432 25.9507 28.9129C24.323 29.0608 23.0872 27.8365 21.5118 26.8007C19.0458 25.1847 17.6531 24.1751 15.2597 22.5968C12.4919 20.772 14.2848 19.7711 15.863 18.1318C16.2751 17.7024 23.444 11.1747 23.5833 10.5828C23.6007 10.5074 23.6152 10.2317 23.4527 10.0868C23.2874 9.9417 23.0465 9.991 22.8725 10.0316C22.6258 10.0868 18.686 12.692 11.0529 17.8504C9.93582 18.6193 8.92042 18.9935 8.0153 18.9732C7.01431 18.9529 5.08793 18.4074 3.65757 17.9404C1.90238 17.3717 0.768006 17.0758 0.889788 16.1067C0.953604 15.602 1.56293 15.0827 2.71475 14.5488Z" fill="var(--token-content-on-solid-primary)"/>
+</svg>
+</div>
+              <div class="app-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="tokenized-svg app-svg" aria-hidden="true" focusable="false">
+<path d="M19.9537 1.06189L3.75 2.26088C2.4537 2.3743 2 3.23303 2 4.25379V21.9307C2 22.7409 2.29167 23.4052 2.97222 24.3287L6.76389 29.2543C7.41204 30.0644 7.96296 30.2264 9.16204 30.1616L27.9583 29.0275C29.5463 28.914 30 28.1849 30 26.9211V7.02442C30 6.37632 29.7407 6.1981 28.9954 5.64721L28.8657 5.54999L23.6806 1.92063C22.4491 1.01329 21.9306 0.899869 19.9537 1.06189ZM9.58333 6.70037C8.04398 6.79759 7.7037 6.82999 6.8287 6.11708L4.60879 4.36721C4.38194 4.14038 4.49537 3.84873 5.0625 3.80012L20.6181 2.66595C21.9306 2.53633 22.6111 2.99 23.1296 3.39506L25.8032 5.33936C25.9167 5.38797 26.1921 5.72822 25.8519 5.72822L9.77778 6.70037H9.59954H9.58333ZM7.80092 26.7915V9.84366C7.80092 9.11455 8.02778 8.7743 8.70833 8.70949L27.1644 7.64012C27.7801 7.57531 28.0718 7.96417 28.0718 8.70949V25.5115C28.0718 26.2568 27.9583 26.8725 26.9375 26.9373L9.27546 27.9581C8.25463 28.0067 7.80092 27.6664 7.80092 26.7591V26.7915ZM25.2361 10.751C25.3495 11.2695 25.2361 11.7718 24.7176 11.8366L23.8588 11.9986V24.5232C23.2593 24.8876 22.5817 25.1042 21.8819 25.1551C20.9745 25.1551 20.7477 24.8634 20.0671 24.0209L14.4931 15.2715V23.713L16.2593 24.1181C16.2593 24.1181 16.2593 25.1388 14.8333 25.1388L10.912 25.3657C10.7986 25.1388 10.912 24.5556 11.3171 24.4583L12.338 24.1667V12.987L10.912 12.8735C10.7986 12.3551 11.0741 11.6259 11.8843 11.5773L16.0972 11.2857L21.8819 20.1323V12.3064L20.4074 12.1444C20.294 11.4963 20.7315 11.0589 21.3148 11.0102L25.2361 10.7672V10.751Z" fill="var(--token-content-on-solid-primary)"/>
+</svg>
+</div>
+              <div class="app-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="tokenized-svg app-svg" aria-hidden="true" focusable="false">
+<path d="M16.7431 16.5353L16.824 16.4607C16.8737 16.411 16.9297 16.3612 16.9794 16.3053L17.0913 16.1996L17.4147 15.8825L17.8499 15.4472L18.2292 15.0742L18.5836 14.726L18.9567 14.3591L19.2925 14.0233L19.765 13.557L20.0448 13.2959C20.2127 13.1404 20.393 12.985 20.5733 12.842C20.7536 12.6989 20.9091 12.5808 21.0832 12.4565C21.2573 12.3321 21.5806 12.1207 21.8355 11.9652C22.0905 11.8098 22.3516 11.6792 22.619 11.5486C22.8864 11.4181 23.1226 11.3186 23.3838 11.2191L23.819 11.0574L24.0429 10.9828C23.3923 8.40095 22.1966 5.98826 20.536 3.90695C20.375 3.71178 20.1727 3.55477 19.9437 3.44725C19.7147 3.33972 19.4646 3.28437 19.2116 3.28516H5.57594C5.52217 3.2864 5.47009 3.30421 5.42683 3.33616C5.38356 3.36811 5.35121 3.41264 5.3342 3.46366C5.31719 3.51468 5.31635 3.56972 5.3318 3.62124C5.34724 3.67276 5.37822 3.71825 5.42049 3.7515C10.0686 7.15436 13.9214 11.527 16.7121 16.5664L16.7431 16.5353Z" fill="var(--token-content-on-solid-secondary)"/>
+<path d="M11.3391 28.5271C14.6757 28.5276 17.9519 27.6361 20.8282 25.9448C23.7045 24.2536 26.0764 21.8241 27.6982 18.9081C27.8101 18.7029 27.922 18.504 28.0215 18.2863C27.8654 18.5935 27.6867 18.8886 27.4868 19.1693C27.4184 19.2687 27.35 19.3682 27.2753 19.4615C27.2007 19.5548 27.0888 19.6978 26.9893 19.8097L26.753 20.0708C26.5914 20.2387 26.4173 20.4004 26.237 20.5558L25.9385 20.7983L25.5717 21.0657L25.3292 21.2149L25.068 21.3704C24.8939 21.4636 24.7136 21.5569 24.5333 21.6377C24.3734 21.7131 24.2094 21.7795 24.0421 21.8367C23.8652 21.905 23.6846 21.9631 23.5011 22.0108C23.227 22.0864 22.9488 22.1466 22.6679 22.1911C22.4628 22.2222 22.2576 22.2471 22.0462 22.2595C21.8266 22.272 21.6066 22.272 21.3871 22.2595C21.1446 22.2595 20.8959 22.2595 20.6471 22.216L20.1 22.1352L19.6212 22.0357L19.3663 21.9735L18.6699 21.7994L18.3217 21.6999L17.8056 21.5383L17.3828 21.4077L16.9849 21.2771L16.7113 21.1838L16.3817 21.0657L16.1454 20.9662L15.6853 20.7983L15.4117 20.6926L15.0573 20.5558L14.678 20.4066L14.4355 20.3444L14.1309 20.2201L13.9008 20.1206L13.6583 20.0149L13.4469 19.9216L13.2542 19.8346L13.0738 19.7227L12.8749 19.6294L12.6262 19.5112L12.3588 19.3869L12.079 19.2501C11.9982 19.2128 11.9173 19.1755 11.8427 19.132C7.65699 17.053 3.87709 14.2417 0.681723 10.8312C0.646811 10.7937 0.60142 10.7676 0.551466 10.7563C0.501511 10.745 0.449309 10.749 0.401662 10.7678C0.354014 10.7866 0.313132 10.8193 0.284342 10.8616C0.255552 10.904 0.240191 10.954 0.240258 11.0053V24.0005C0.238792 24.279 0.306132 24.5536 0.436297 24.7998C0.566463 25.046 0.755423 25.2563 0.986396 25.412C4.05128 27.445 7.64877 28.5266 11.3266 28.5209" fill="var(--token-content-on-solid-primary)"/>
+<path d="M32 11.5865C29.6238 10.4268 26.9049 10.179 24.3583 10.8901L24.0411 10.9834L23.8173 11.058L23.3821 11.2196C23.1209 11.3191 22.866 11.4311 22.6173 11.5492C22.3686 11.6673 22.0888 11.8166 21.8338 11.9658C21.5789 12.115 21.324 12.2829 21.0815 12.457C20.839 12.6311 20.7395 12.7057 20.5716 12.8425C20.4037 12.9793 20.211 13.141 20.0431 13.2964L19.7633 13.5575L19.2907 14.0239L18.955 14.3596L18.5819 14.7265L18.2275 15.0747L17.8482 15.4478L17.413 15.883L17.0896 16.2001L16.9777 16.3058C16.928 16.3618 16.872 16.4115 16.8223 16.4613L16.7414 16.5359C16.7041 16.5794 16.6606 16.6167 16.6233 16.654L16.4865 16.7784C15.3173 17.8536 14.0155 18.7751 12.6128 19.5204L12.8615 19.6386L13.0729 19.7256L13.2657 19.8127L13.4584 19.8997L13.6698 19.993L13.9123 20.0987L14.1424 20.1982L14.4471 20.3225L14.6895 20.422L15.0688 20.5713L15.4232 20.708L15.6968 20.8137L16.157 20.9816L16.3932 21.0625L16.7228 21.1806L16.9964 21.2739L17.3943 21.4044L17.8171 21.535L18.3332 21.6967L18.6814 21.7962L19.3778 21.9951L19.6327 22.0573L20.1115 22.1568L20.6587 22.2376C20.9074 22.2376 21.1561 22.2812 21.3986 22.2812C21.6181 22.2937 21.8381 22.2937 22.0577 22.2812C22.2691 22.2812 22.4743 22.2438 22.6794 22.2128C22.9603 22.1682 23.2385 22.108 23.5126 22.0324C23.6961 21.9848 23.8767 21.9266 24.0536 21.8583C24.2209 21.8012 24.3849 21.7347 24.5448 21.6594C24.7251 21.5785 24.9054 21.4853 25.0795 21.392L25.3407 21.2366L25.5832 21.0873L25.95 20.82L26.2485 20.5775C26.4288 20.422 26.6029 20.2604 26.7646 20.0925L27.0008 19.8313C27.1003 19.7194 27.1936 19.6013 27.2869 19.4831C27.3801 19.365 27.4299 19.2904 27.4983 19.1909C27.6945 18.9122 27.8731 18.6215 28.033 18.3204L28.2133 17.9535L29.861 14.6581C30.3794 13.5116 31.1044 12.4704 32 11.5865Z" fill="var(--token-content-on-solid-tertiary)"/>
+</svg>
+</div>
             </div>
             <div class="search-bar">
-              <img class="mag" src="assets/search.svg" alt="" />
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="tokenized-svg mag" aria-hidden="true" focusable="false">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 0C11.6421 0 15 3.35786 15 7.5C15 9.30091 14.3636 10.9522 13.3057 12.2451L19.2803 18.2197C19.5732 18.5126 19.5732 18.9874 19.2803 19.2803C18.9874 19.5732 18.5126 19.5732 18.2197 19.2803L12.2451 13.3057C10.9522 14.3636 9.30091 15 7.5 15C3.35786 15 0 11.6421 0 7.5C0 3.35786 3.35786 0 7.5 0ZM7.5 1.5C4.18629 1.5 1.5 4.18629 1.5 7.5C1.5 10.8137 4.18629 13.5 7.5 13.5C10.8137 13.5 13.5 10.8137 13.5 7.5C13.5 4.18629 10.8137 1.5 7.5 1.5Z" fill="var(--token-content-on-translucent-primary)"/>
+</svg>
+
               <span>Search</span>
             </div>
             <div class="home-bar"></div>
