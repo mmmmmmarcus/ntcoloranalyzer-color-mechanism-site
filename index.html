@@ -59,7 +59,8 @@ main { min-height: 100vh; }
 .birthday-widget { grid-column: 1 / span 2; grid-row: 6 / span 2; border-radius: 20px; background: var(--token-container-accent); color: var(--token-content-on-accent-primary); padding: 18px 16px; font-family: Georgia, "Times New Roman", serif; }
 .birthday-date { position: absolute; right: 15px; top: 15px; color: var(--token-content-on-accent-primary); font-size: 20px; line-height: 1; font-weight: 700; }
 .birthday-copy { position: absolute; left: 16px; right: 16px; bottom: 16px; color: var(--token-content-on-accent-primary); font-size: 20px; line-height: 1.2; }
-.accent-tile { grid-column: 3; grid-row: 5; border-radius: 8px; background: var(--token-container-accent); display: grid; place-items: center; color: var(--token-content-on-accent-primary); font-size: 30px; }
+.theme-switcher { --theme-switcher-container: var(--token-container-primary); --theme-switcher-content: var(--token-content-on-solid-primary); grid-column: 3; grid-row: 5; border-radius: 8px; background: var(--theme-switcher-container); display: grid; place-items: center; }
+.theme-switcher[data-mode="dark"] { --theme-switcher-container: var(--token-container-accent); --theme-switcher-content: var(--token-content-on-accent-primary); }
 .weather-tile { grid-column: 4; grid-row: 5; border-radius: 50%; display: grid; place-items: center; }
 .volume-widget { grid-column: 3; grid-row: 6 / span 2; border-radius: 999px; background: var(--token-container-secondary); backdrop-filter: blur(20px); padding: 10px; display: flex; align-items: flex-end; }
 .volume-fill { width: 100%; height: 103px; border-radius: 999px; background: var(--token-container-primary); display: grid; place-items: end center; padding-bottom: 20px; }
@@ -206,7 +207,12 @@ li + li { margin-top: 8px; }
                 <span class="rec-dot"></span>
                 <span class="rec-text">REC</span>
               </div>
-              <div class="widget accent-tile">▭+</div>
+              <div class="widget theme-switcher" data-mode="dark">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="tokenized-svg tile-img" aria-hidden="true" focusable="false">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 2C23.732 2 30 8.26801 30 16C30 23.732 23.732 30 16 30C8.26801 30 2 23.732 2 16C2 8.26801 8.26801 2 16 2ZM16 28C22.6274 28 28 22.6274 28 16C28 9.37258 22.6274 4 16 4V28Z" fill="var(--theme-switcher-content)"/>
+</svg>
+
+              </div>
               <div class="widget weather-tile">
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="tokenized-svg tile-img" aria-hidden="true" focusable="false">
 <path d="M10.9795 11.8281C14.7934 11.8281 18.0496 14.2067 19.3516 17.5605C20.5475 16.5686 22.0837 15.9727 23.7588 15.9727C27.5738 15.9727 30.667 19.0659 30.667 22.8809C30.6667 26.5798 27.7588 29.5993 24.1045 29.7793V29.7852H23.877C23.8377 29.7858 23.7982 29.7881 23.7588 29.7881C23.7193 29.7881 23.6799 29.7858 23.6406 29.7852H11.0947C11.0565 29.7856 11.0178 29.7881 10.9795 29.7881C10.941 29.7881 10.9026 29.7856 10.8643 29.7852H10.6348V29.7793C5.83529 29.5979 2 25.6515 2 20.8076C2.00023 15.8485 6.02036 11.8284 10.9795 11.8281Z" fill="var(--token-content-on-solid-primary)"/>
