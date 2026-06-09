@@ -24,7 +24,7 @@ main { min-height: 100vh; }
 .status-time { position: absolute; left: 32px; top: 22px; line-height: 18px; }
 .status-icons { position: absolute; right: 31px; top: 19px; display: flex; align-items: center; gap: 5px; line-height: 1; }
 .status-icons img { display: block; width: 16px; height: 16px; object-fit: contain; }
-.status-icons img.status-battery { width: 22px; height: 16px; }
+.status-icons img.status-battery { width: 20px; height: 20px; }
 .camera { position: absolute; left: 50%; top: 16px; width: 25px; height: 25px; transform: translateX(-50%); border-radius: 999px; background: radial-gradient(circle at 57% 40%, #333 0 8%, transparent 9%), radial-gradient(circle at 50% 50%, #070707 0 40%, #282828 49%, #050505 58%); box-shadow: inset 0 0 0 2px rgba(255,255,255,.08), 0 1px 4px rgba(0,0,0,.3); }
 .launcher-grid { position: absolute; left: 30px; right: 30px; top: 65px; display: grid; grid-template-columns: repeat(4, 72px); grid-auto-rows: 72px; gap: 22px 22px; }
 .widget { position: relative; overflow: hidden; border-radius: 22px; background: rgba(247,249,255,.95); box-shadow: 0 16px 34px rgba(51,62,88,.08); }
@@ -40,7 +40,7 @@ main { min-height: 100vh; }
 .album-widget::before { content: ""; position: absolute; left: -12px; top: 22px; width: 154px; height: 82px; border: 10px solid rgba(255,245,234,.8); border-radius: 50%; transform: rotate(-18deg); }
 .media-logo { position: absolute; left: 14px; bottom: 12px; width: 34px; height: 34px; object-fit: contain; transform: rotate(-8deg); }
 .accent-tile { grid-column: 3; grid-row: 5; border-radius: 8px; background: #658bd4; display: grid; place-items: center; color: white; font-size: 30px; }
-.weather-tile { grid-column: 4; grid-row: 5; border-radius: 50%; display: grid; place-items: center; color: #24262b; font-size: 30px; }
+.weather-tile { grid-column: 4; grid-row: 5; border-radius: 50%; display: grid; place-items: center; }
 .volume-widget { grid-column: 3; grid-row: 6 / span 2; border-radius: 999px; background: rgba(255,255,255,.46); backdrop-filter: blur(20px); padding: 10px; display: flex; align-items: flex-end; }
 .volume-fill { width: 100%; height: 103px; border-radius: 999px; background: #f7f9ff; display: grid; place-items: end center; padding-bottom: 20px; }
 .timer-tile { grid-column: 4; grid-row: 6; border-radius: 8px; display: grid; place-items: center; color: #25272c; font-size: 30px; }
@@ -53,8 +53,8 @@ main { min-height: 100vh; }
 .dock { position: absolute; left: 30px; right: 30px; top: 738px; display: grid; grid-template-columns: repeat(4, 72px); gap: 22px; }
 .app-icon { width: 72px; height: 72px; border-radius: 50%; background: #f7f9ff; display: grid; place-items: center; box-shadow: 0 14px 26px rgba(40,52,78,.08); }
 .app-icon img { width: 32px; height: 32px; object-fit: contain; }
-.search-bar { position: absolute; left: 31px; right: 31px; top: 829px; height: 56px; border-radius: 81px; background: rgba(255,255,255,.5); backdrop-filter: blur(20px); display: grid; grid-template-columns: 48px 1fr 48px; align-items: center; color: rgba(6,7,12,.8); font-size: 15px; font-weight: 500; }
-.search-bar .mag { width: 22px; height: 22px; margin-left: 18px; object-fit: contain; opacity: .75; }
+.search-bar { position: absolute; left: 31px; right: 31px; top: 829px; height: 56px; border-radius: 81px; background: rgba(255,255,255,.5); backdrop-filter: blur(20px); display: flex; align-items: center; justify-content: center; gap: 10px; color: rgba(6,7,12,.8); font-size: 15px; font-weight: 500; }
+.search-bar .mag { width: 22px; height: 22px; object-fit: contain; opacity: .75; }
 .home-bar { position: absolute; left: 183px; bottom: 8px; width: 48px; height: 4px; border-radius: 999px; background: rgba(0,0,0,.42); }
 .sample { position: absolute; left: 20px; right: 20px; top: 80px; }
 .eyebrow { margin: 0; color: rgba(255,255,255,.58); font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
@@ -115,7 +115,7 @@ li + li { margin-top: 8px; }
                 <img src="assets/network-signal-4bar.svg" alt="" />
                 <img src="assets/wifi.svg" alt="" />
                 <img src="assets/bluetooth.svg" alt="" />
-                <img class="status-battery" src="assets/Battery%20icon.svg" alt="" />
+                <img class="status-battery" src="assets/battery.svg" alt="" />
               </div>
             </div>
             <div class="launcher-grid">
@@ -131,7 +131,9 @@ li + li { margin-top: 8px; }
                 <span class="rec-text">REC</span>
               </div>
               <div class="widget accent-tile">▭+</div>
-              <div class="widget weather-tile">☁</div>
+              <div class="widget weather-tile">
+                <img class="tile-img" src="assets/weather.svg" alt="" />
+              </div>
               <div class="widget album-widget">
                 <img class="media-logo" src="assets/Media%20Logo.svg" alt="" />
               </div>
@@ -157,7 +159,6 @@ li + li { margin-top: 8px; }
             <div class="search-bar">
               <img class="mag" src="assets/search.svg" alt="" />
               <span>Search</span>
-              <span></span>
             </div>
             <div class="home-bar"></div>
           </div>
