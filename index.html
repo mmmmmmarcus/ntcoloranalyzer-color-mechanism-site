@@ -44,17 +44,21 @@ main { min-height: 100vh; }
 .camera { position: absolute; left: 50%; top: 16px; width: 25px; height: 25px; transform: translateX(-50%); border-radius: 999px; background: radial-gradient(circle at 57% 40%, #333 0 8%, transparent 9%), radial-gradient(circle at 50% 50%, #070707 0 40%, #282828 49%, #050505 58%); box-shadow: inset 0 0 0 2px rgba(255,255,255,.08), 0 1px 4px rgba(0,0,0,.3); }
 .launcher-grid { position: absolute; left: 30px; right: 30px; top: 65px; display: grid; grid-template-columns: repeat(4, 72px); grid-auto-rows: 72px; gap: 22px 22px; }
 .widget { position: relative; overflow: hidden; border-radius: 22px; background: var(--token-container-primary); box-shadow: 0 16px 34px rgba(51,62,88,.08); }
-.relax-widget { grid-column: span 2; grid-row: span 2; border-radius: 88px; background: radial-gradient(circle at 68% 20%, rgba(255,222,236,.9), rgba(246,250,255,.88) 72%); }
-.relax-img { position: absolute; left: 32px; top: 29px; width: 104px; height: 104px; }
-.relax-text { position: absolute; left: 0; right: 0; bottom: 22px; color: var(--token-content-on-solid-secondary); font-size: 14px; text-align: center; transform: rotate(18deg); }
+.clock-widget { grid-column: span 2; grid-row: span 2; border-radius: 50%; background: var(--token-container-secondary); backdrop-filter: blur(32px); display: grid; place-items: center; padding: 7px; }
+.clock-face { width: 154px; height: 154px; }
+.clock-tick { stroke: var(--token-content-on-translucent-secondary); stroke-width: 1.2; stroke-linecap: round; }
+.clock-tick-major { stroke: var(--token-content-on-translucent-primary); stroke-width: 1.8; }
+.clock-hand { stroke: var(--token-content-on-translucent-primary); stroke-width: 3; stroke-linecap: round; }
+.clock-hand-accent { stroke: #6ca2f6; stroke-width: 2.8; stroke-linecap: round; }
+.clock-pin { fill: #6ca2f6; }
 .headphone-widget { grid-column: 3 / span 2; grid-row: span 2; display: flex; align-items: center; justify-content: center; }
 .product-img { width: 148px; height: 148px; object-fit: contain; }
 .rec-widget { grid-column: span 2; grid-row: 3; display: flex; align-items: center; gap: 34px; padding: 0 24px; border-radius: 72px; }
 .rec-dot { width: 24px; height: 24px; border-radius: 999px; background: #e21d28; }
 .rec-text { font-family: "Courier New", monospace; font-size: 20px; letter-spacing: 2px; color: var(--token-content-on-solid-primary); }
-.album-widget { grid-column: 1 / span 2; grid-row: 6 / span 2; border-radius: 20px; background: linear-gradient(135deg, #131313 0 18%, #e5c8bd 19% 58%, #292b28 59% 100%); }
-.album-widget::before { content: ""; position: absolute; left: -12px; top: 22px; width: 154px; height: 82px; border: 10px solid rgba(255,245,234,.8); border-radius: 50%; transform: rotate(-18deg); }
-.media-logo { position: absolute; left: 14px; bottom: 12px; width: 34px; height: 34px; object-fit: contain; transform: rotate(-8deg); }
+.birthday-widget { grid-column: 1 / span 2; grid-row: 6 / span 2; border-radius: 20px; background: var(--token-container-accent); color: var(--token-content-on-accent-primary); padding: 18px 16px; font-family: Georgia, "Times New Roman", serif; }
+.birthday-date { position: absolute; right: 15px; top: 15px; color: var(--token-content-on-accent-primary); font-size: 20px; line-height: 1; font-weight: 700; }
+.birthday-copy { position: absolute; left: 16px; right: 16px; bottom: 16px; color: var(--token-content-on-accent-primary); font-size: 20px; line-height: 1.2; }
 .accent-tile { grid-column: 3; grid-row: 5; border-radius: 8px; background: var(--token-container-accent); display: grid; place-items: center; color: var(--token-content-on-accent-primary); font-size: 30px; }
 .weather-tile { grid-column: 4; grid-row: 5; border-radius: 50%; display: grid; place-items: center; }
 .volume-widget { grid-column: 3; grid-row: 6 / span 2; border-radius: 999px; background: var(--token-container-secondary); backdrop-filter: blur(20px); padding: 10px; display: flex; align-items: flex-end; }
@@ -184,12 +188,16 @@ li + li { margin-top: 8px; }
               </div>
             </div>
             <div class="launcher-grid">
-              <div class="widget relax-widget">
-                <svg width="102" height="102" viewBox="0 0 102 102" fill="none" xmlns="http://www.w3.org/2000/svg" class="tokenized-svg relax-img" aria-hidden="true" focusable="false">
-<path d="M51 0C79.1665 0 102 22.8335 102 51C102 79.1662 79.1671 101.998 51.001 101.999V102L51 101.999V102C22.8335 102 0 79.1665 0 51C4.12327e-06 22.8335 22.8335 6.1857e-06 51 0ZM51.001 1.59961C49.976 1.59961 48.5962 2.3993 47.0352 4.86426C45.5238 7.25089 44.1031 10.8104 42.8867 15.3516C40.4601 24.4108 38.9395 37.015 38.9395 51C38.9395 64.985 40.4601 77.5892 42.8867 86.6484C44.1031 91.1896 45.5238 94.7491 47.0352 97.1357C48.5957 99.5999 49.9751 100.399 51 100.399H51.001C52.0259 100.399 53.405 99.6004 54.9658 97.1357C56.4772 94.7491 57.8979 91.1896 59.1143 86.6484C61.5408 77.5892 63.0615 64.985 63.0615 51C63.0615 37.015 61.5408 24.4108 59.1143 15.3516C57.8979 10.8104 56.4772 7.25088 54.9658 4.86426C53.405 2.39963 52.0259 1.59982 51.001 1.59961ZM47.4678 1.72461C37.1264 2.45524 27.6653 6.37016 20.0557 12.4932C24.648 14.4751 28.2314 30.9577 28.2314 50.998C28.2314 71.0409 24.6468 87.525 20.0537 89.5039C27.6628 95.6273 37.1228 99.543 47.4639 100.274C41.6337 94.4565 37.3398 74.6002 37.3398 51C37.3398 27.3966 41.6363 7.53941 47.4678 1.72461ZM54.5361 1.72559C60.3666 7.54274 64.6611 27.399 64.6611 51C64.6611 74.6031 60.3644 94.4593 54.5332 100.274C80.167 98.4628 100.4 77.0948 100.4 51C100.4 24.9062 80.1686 3.53859 54.5361 1.72559ZM19.125 13.8926C18.8305 13.8926 18.0398 14.2028 16.9775 16.1123C15.9913 17.8853 15.0513 20.5572 14.2422 23.9961C12.6299 30.8484 11.6172 40.3959 11.6172 50.998C11.6172 61.6004 12.6299 71.1486 14.2422 78.001C15.0513 81.4395 15.9914 84.1108 16.9775 85.8838C18.0398 87.7933 18.8305 88.1035 19.125 88.1035C19.4198 88.1033 20.2095 87.7927 21.2715 85.8838C22.2577 84.1109 23.1977 81.4395 24.0068 78.001C25.6192 71.1486 26.6318 61.6004 26.6318 50.998C26.6318 40.3958 25.6191 30.8484 24.0068 23.9961C23.1977 20.5572 22.2578 17.8853 21.2715 16.1123C20.2096 14.2034 19.4197 13.8928 19.125 13.8926ZM14.457 17.7568C6.46884 26.5328 1.59961 38.198 1.59961 51C1.59961 63.8017 6.46913 75.4663 14.457 84.2422C11.7976 77.4837 10.0176 65.1244 10.0176 50.998C10.0176 36.8732 11.798 24.5155 14.457 17.7568Z" fill="var(--token-content-on-solid-primary)"/>
-</svg>
-
-                <div class="relax-text">relaxation</div>
+              <div class="widget clock-widget">
+                
+  <svg class="clock-face" viewBox="0 0 154 154" aria-hidden="true" focusable="false">
+    <line class="clock-tick clock-tick-major" x1="77.00" y1="13.00" x2="77.00" y2="4.00" /><line class="clock-tick " x1="84.11" y1="9.37" x2="84.63" y2="4.40" /><line class="clock-tick " x1="91.14" y1="10.49" x2="92.18" y2="5.60" /><line class="clock-tick " x1="98.01" y1="12.33" x2="99.56" y2="7.57" /><line class="clock-tick " x1="104.66" y1="14.88" x2="106.69" y2="10.31" /><line class="clock-tick clock-tick-major" x1="109.00" y1="21.57" x2="113.50" y2="13.78" /><line class="clock-tick " x1="116.97" y1="21.99" x2="119.91" y2="17.94" /><line class="clock-tick " x1="122.50" y1="26.47" x2="125.85" y2="22.75" /><line class="clock-tick " x1="127.53" y1="31.50" x2="131.25" y2="28.15" /><line class="clock-tick " x1="132.01" y1="37.03" x2="136.06" y2="34.09" /><line class="clock-tick clock-tick-major" x1="132.43" y1="45.00" x2="140.22" y2="40.50" /><line class="clock-tick " x1="139.12" y1="49.34" x2="143.69" y2="47.31" /><line class="clock-tick " x1="141.67" y1="55.99" x2="146.43" y2="54.44" /><line class="clock-tick " x1="143.51" y1="62.86" x2="148.40" y2="61.82" /><line class="clock-tick " x1="144.63" y1="69.89" x2="149.60" y2="69.37" /><line class="clock-tick clock-tick-major" x1="141.00" y1="77.00" x2="150.00" y2="77.00" /><line class="clock-tick " x1="144.63" y1="84.11" x2="149.60" y2="84.63" /><line class="clock-tick " x1="143.51" y1="91.14" x2="148.40" y2="92.18" /><line class="clock-tick " x1="141.67" y1="98.01" x2="146.43" y2="99.56" /><line class="clock-tick " x1="139.12" y1="104.66" x2="143.69" y2="106.69" /><line class="clock-tick clock-tick-major" x1="132.43" y1="109.00" x2="140.22" y2="113.50" /><line class="clock-tick " x1="132.01" y1="116.97" x2="136.06" y2="119.91" /><line class="clock-tick " x1="127.53" y1="122.50" x2="131.25" y2="125.85" /><line class="clock-tick " x1="122.50" y1="127.53" x2="125.85" y2="131.25" /><line class="clock-tick " x1="116.97" y1="132.01" x2="119.91" y2="136.06" /><line class="clock-tick clock-tick-major" x1="109.00" y1="132.43" x2="113.50" y2="140.22" /><line class="clock-tick " x1="104.66" y1="139.12" x2="106.69" y2="143.69" /><line class="clock-tick " x1="98.01" y1="141.67" x2="99.56" y2="146.43" /><line class="clock-tick " x1="91.14" y1="143.51" x2="92.18" y2="148.40" /><line class="clock-tick " x1="84.11" y1="144.63" x2="84.63" y2="149.60" /><line class="clock-tick clock-tick-major" x1="77.00" y1="141.00" x2="77.00" y2="150.00" /><line class="clock-tick " x1="69.89" y1="144.63" x2="69.37" y2="149.60" /><line class="clock-tick " x1="62.86" y1="143.51" x2="61.82" y2="148.40" /><line class="clock-tick " x1="55.99" y1="141.67" x2="54.44" y2="146.43" /><line class="clock-tick " x1="49.34" y1="139.12" x2="47.31" y2="143.69" /><line class="clock-tick clock-tick-major" x1="45.00" y1="132.43" x2="40.50" y2="140.22" /><line class="clock-tick " x1="37.03" y1="132.01" x2="34.09" y2="136.06" /><line class="clock-tick " x1="31.50" y1="127.53" x2="28.15" y2="131.25" /><line class="clock-tick " x1="26.47" y1="122.50" x2="22.75" y2="125.85" /><line class="clock-tick " x1="21.99" y1="116.97" x2="17.94" y2="119.91" /><line class="clock-tick clock-tick-major" x1="21.57" y1="109.00" x2="13.78" y2="113.50" /><line class="clock-tick " x1="14.88" y1="104.66" x2="10.31" y2="106.69" /><line class="clock-tick " x1="12.33" y1="98.01" x2="7.57" y2="99.56" /><line class="clock-tick " x1="10.49" y1="91.14" x2="5.60" y2="92.18" /><line class="clock-tick " x1="9.37" y1="84.11" x2="4.40" y2="84.63" /><line class="clock-tick clock-tick-major" x1="13.00" y1="77.00" x2="4.00" y2="77.00" /><line class="clock-tick " x1="9.37" y1="69.89" x2="4.40" y2="69.37" /><line class="clock-tick " x1="10.49" y1="62.86" x2="5.60" y2="61.82" /><line class="clock-tick " x1="12.33" y1="55.99" x2="7.57" y2="54.44" /><line class="clock-tick " x1="14.88" y1="49.34" x2="10.31" y2="47.31" /><line class="clock-tick clock-tick-major" x1="21.57" y1="45.00" x2="13.78" y2="40.50" /><line class="clock-tick " x1="21.99" y1="37.03" x2="17.94" y2="34.09" /><line class="clock-tick " x1="26.47" y1="31.50" x2="22.75" y2="28.15" /><line class="clock-tick " x1="31.50" y1="26.47" x2="28.15" y2="22.75" /><line class="clock-tick " x1="37.03" y1="21.99" x2="34.09" y2="17.94" /><line class="clock-tick clock-tick-major" x1="45.00" y1="21.57" x2="40.50" y2="13.78" /><line class="clock-tick " x1="49.34" y1="14.88" x2="47.31" y2="10.31" /><line class="clock-tick " x1="55.99" y1="12.33" x2="54.44" y2="7.57" /><line class="clock-tick " x1="62.86" y1="10.49" x2="61.82" y2="5.60" /><line class="clock-tick " x1="69.89" y1="9.37" x2="69.37" y2="4.40" />
+    <line class="clock-hand" x1="77" y1="77" x2="45" y2="47" />
+    <line class="clock-hand" x1="77" y1="77" x2="119" y2="51" />
+    <line class="clock-hand-accent" x1="77" y1="77" x2="77" y2="135" />
+    <circle class="clock-pin" cx="77" cy="77" r="4.5" />
+    <circle class="clock-pin" cx="77" cy="135" r="5.5" />
+  </svg>
               </div>
               <div class="widget headphone-widget">
                 <img class="product-img" src="assets/Nothing%20audio%20devices.png" alt="" />
@@ -206,22 +214,9 @@ li + li { margin-top: 8px; }
 </svg>
 
               </div>
-              <div class="widget album-widget">
-                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="tokenized-svg media-logo" aria-hidden="true" focusable="false">
-<ellipse cx="15" cy="32" rx="2" ry="2" transform="rotate(-90 15 32)" fill="var(--token-content-on-accent-primary)"/>
-<ellipse cx="21" cy="32" rx="2" ry="2" transform="rotate(-90 21 32)" fill="var(--token-content-on-accent-primary)"/>
-<ellipse cx="27" cy="32" rx="2" ry="2" transform="rotate(-90 27 32)" fill="var(--token-content-on-accent-primary)"/>
-<ellipse cx="33" cy="32" rx="2" ry="2" transform="rotate(-90 33 32)" fill="var(--token-content-on-accent-primary)"/>
-<ellipse cx="21" cy="20" rx="2" ry="2" transform="rotate(-90 21 20)" fill="var(--token-content-on-accent-primary)"/>
-<ellipse cx="21" cy="16" rx="2" ry="2" transform="rotate(-90 21 16)" fill="var(--token-content-on-accent-primary)"/>
-<ellipse cx="15" cy="28" rx="2" ry="2" transform="rotate(-90 15 28)" fill="var(--token-content-on-accent-primary)"/>
-<ellipse cx="15" cy="24" rx="2" ry="2" transform="rotate(-90 15 24)" fill="var(--token-content-on-accent-primary)"/>
-<ellipse cx="21" cy="28" rx="2" ry="2" transform="rotate(-90 21 28)" fill="var(--token-content-on-accent-primary)"/>
-<ellipse cx="33" cy="28" rx="2" ry="2" transform="rotate(-90 33 28)" fill="var(--token-content-on-accent-primary)"/>
-<ellipse cx="21" cy="24" rx="2" ry="2" transform="rotate(-90 21 24)" fill="var(--token-content-on-accent-primary)"/>
-<ellipse cx="33" cy="24" rx="2" ry="2" transform="rotate(-90 33 24)" fill="var(--token-content-on-accent-primary)"/>
-</svg>
-
+              <div class="widget birthday-widget">
+                <div class="birthday-date">25 Fri</div>
+                <div class="birthday-copy">Yuri Levin’s<br />Birthday</div>
               </div>
               <div class="volume-widget">
                 <div class="volume-fill">
